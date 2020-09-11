@@ -11,11 +11,14 @@ class SearchFacade
       Poem.new(poem)
     end
     poem_results.each do |poem|
-      poem.tone = @tone_service.get_tone(poem.text)
+      tone_response = @tone_service.get_tone(poem.text)
+      poem.tone = tone_names(tone_response)
     end
   end
-  # call poetry service to get results
-  # turn it into poem objects
-  # pass the lines to the tone service for each poem
-  # add tone result to poem object
+
+  def tone_names(tone_results)
+    tone_results[:document_tone][:tones].map do |tone|
+      tone[:tone_name]
+    end
+  end
 end
