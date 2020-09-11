@@ -1,3 +1,8 @@
+# This is a good start to lead your development
+# I would suggest somewhere in your test you are making sure that the data you are expecting is on the page
+# poem = PoetryService.get_poems_by_author("Emily", 1)
+# expect(page).to have_content(poem.title) etc.
+
 require 'rails_helper'
 
 RSpec.describe 'user can search for poems' do
